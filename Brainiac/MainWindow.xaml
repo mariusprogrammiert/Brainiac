@@ -1,0 +1,71 @@
+﻿<Window x:Class="Brainiac.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Brainiac" Height="520" Width="414" ResizeMode="NoResize" Closing="Window_Closing">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <Canvas Width="400" Height="400" VerticalAlignment="Top" >
+            <Rectangle
+            Name="fieldGreen"
+            Width="200"
+            Height="200"
+            Fill="DarkGreen" MouseLeftButtonUp="fieldGreen_MouseLeftButtonUp" />
+
+            <Rectangle
+            Name="fieldRed"
+            Width="200"
+            Height="200"
+            Fill="DarkRed" 
+            Canvas.Left="200" MouseLeftButtonUp="fieldRed_MouseLeftButtonUp"/>
+
+            <Rectangle
+            Name="fieldYellow"
+            Width="200"
+            Height="200"
+            Fill="Orange" 
+            Canvas.Top="200" MouseLeftButtonUp="fieldYellow_MouseLeftButtonUp"/>
+
+            <Rectangle
+            Name="fieldBlue"
+            Width="200"
+            Height="200"
+            Fill="DarkBlue" 
+            Canvas.Left="200"
+            Canvas.Top="200" MouseLeftButtonUp="fieldBlue_MouseLeftButtonUp"/>
+
+            <Canvas.Clip>
+                <CombinedGeometry GeometryCombineMode="Exclude">
+                    <CombinedGeometry.Geometry1>
+                        <EllipseGeometry
+                          RadiusX="190"
+                          RadiusY="190"
+                          Center="200,200"/>
+                    </CombinedGeometry.Geometry1>
+
+                    <CombinedGeometry.Geometry2>
+                        <EllipseGeometry
+                          RadiusX="110"
+                          RadiusY="110"
+                          Center="200,200"/>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </Canvas.Clip>
+        </Canvas>
+
+        <Label Grid.Row="1" Name="labelPoints">Bereit!</Label>
+        <Button Grid.Row="2" Name="buttonGame" Click="buttonGame_Click">Neues Spiel</Button>
+    </Grid>
+
+</Window>
