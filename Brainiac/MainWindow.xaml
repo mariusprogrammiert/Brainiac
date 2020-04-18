@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Brainiac" Height="520" Width="414" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="Brainiac" Height="520" Width="414" ResizeMode="NoResize" Closing="Window_Closing" Icon="Icon.ico">
 
     <Grid>
         <Grid.ColumnDefinitions>
