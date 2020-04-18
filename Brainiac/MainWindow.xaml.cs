@@ -45,14 +45,12 @@ namespace Brainiac
             mpGameOver.MediaEnded += playedGameOver;
             mpGameOver.MediaFailed += loadingFailed;
         }
-
         private void loadingFailed(object sender, ExceptionEventArgs e)
         {
             MessageBox.Show("Es konnten nicht alle Sounddateien geladen werden!\nDas Spiel wird beendet...",
                 "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             Close();
         }
-
         private void PlayField(FieldColors field)
         {
             switch (field)
