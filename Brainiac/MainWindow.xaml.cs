@@ -31,15 +31,28 @@ namespace Brainiac
 
             mpGreen.Open(new Uri("Resources/550.wav", UriKind.Relative));
             mpGreen.MediaEnded += playedGreen;
+            mpGreen.MediaFailed += loadingFailed;
             mpRed.Open(new Uri("Resources/620.wav", UriKind.Relative));
             mpRed.MediaEnded += playedRed;
+            mpRed.MediaFailed += loadingFailed;
             mpYellow.Open(new Uri("Resources/480.wav", UriKind.Relative));
             mpYellow.MediaEnded += playedYellow;
+            mpYellow.MediaFailed += loadingFailed;
             mpBlue.Open(new Uri("Resources/690.wav", UriKind.Relative));
             mpBlue.MediaEnded += playedBlue;
+            mpBlue.MediaFailed += loadingFailed;
             mpGameOver.Open(new Uri("Resources/gameover.wav", UriKind.Relative));
             mpGameOver.MediaEnded += playedGameOver;
+            mpGameOver.MediaFailed += loadingFailed;
         }
+
+        private void loadingFailed(object sender, ExceptionEventArgs e)
+        {
+            MessageBox.Show("Es konnten nicht alle Sounddateien geladen werden!\nDas Spiel wird beendet...",
+                "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            Close();
+        }
+
         private void PlayField(FieldColors field)
         {
             switch (field)
