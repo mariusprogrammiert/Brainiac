@@ -5,17 +5,17 @@ namespace Brainiac
 {
     class BrainiacController
     {
-        public event Action<FieldColors> PlayField;
+        public event Action<FieldColors, bool> PlayField;
         public event Action<int> UpdatePoints;
         public event Action PlayGameOver;
-        public event Action LockButton;
-        public event Action UnlockButton;
+        public event Action LockElements;
+        public event Action UnlockElements;
         public bool isGameRunning { get; set; }
 
         private readonly Dictionary<int, FieldColors> fields;
         private Random random;
         private int points, internalPlayerCounter, internalComputerCounter;
-        private bool isComputerTurn;
+        private bool isComputerTurn, shouldRotate;
 
         public BrainiacController()
         {
@@ -23,23 +23,27 @@ namespace Brainiac
             random = new Random();
             isGameRunning = false;
         }
-        public void startNewGame()
+
+        public void startNewGame(bool isHardcoreMode)
         {
-            LockButton();
+            LockElements();
             fields.Clear();
             points = 0;
             internalPlayerCounter = 0;
             internalComputerCounter = 0;
             isComputerTurn = true;
             isGameRunning = true;
+            shouldRotate = isHardcoreMode;
             UpdatePoints(points);
             performNewTurn();
         }
+
         private void performNewTurn()
         {
             fields.Add(fields.Count, (FieldColors)random.Next(4));
-            PlayField(fields[0]);
+            PlayField(fields[0], shouldRotate);
         }
+
         public void handlePlayedColor(FieldColors color)
         {
             if (isComputerTurn)
@@ -54,7 +58,7 @@ namespace Brainiac
                     }
                     else
                     {
-                        PlayField(fields[internalComputerCounter]);
+                        PlayField(fields[internalComputerCounter], false);
                     }
                 }
             }
@@ -78,7 +82,7 @@ namespace Brainiac
                 {
                     isGameRunning = false;
                     PlayGameOver();
-                    UnlockButton();
+                    UnlockElements();
                 }
             }
         }

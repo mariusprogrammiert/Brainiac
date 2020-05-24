@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Brainiac" Height="520" Width="414" ResizeMode="NoResize" Closing="Window_Closing" Icon="Icon.ico">
+        Title="Brainiac" Height="530" Width="414" ResizeMode="NoResize" Closing="Window_Closing" Icon="Icon.ico">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -12,11 +12,12 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*" />
-            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
             <RowDefinition Height="0.5*" />
         </Grid.RowDefinitions>
 
-        <Canvas Grid.Row="0" Width="400" Height="400" VerticalAlignment="Top" >
+        <Canvas Grid.Row="0" Width="400" Height="400" VerticalAlignment="Top" Name="gameField" >
             <Rectangle
             Name="fieldGreen"
             Width="200"
@@ -65,7 +66,8 @@
         </Canvas>
 
         <Label Grid.Row="1" Name="labelPoints">Bereit!</Label>
-        <Button Grid.Row="2" Name="buttonGame" Click="buttonGame_Click">Neues Spiel</Button>
+        <CheckBox Grid.Row="2" Name="cbHardcoreMode">Hardcoremodus</CheckBox>
+        <Button Grid.Row="3" Name="buttonGame" Click="buttonGame_Click">Neues Spiel</Button>
     </Grid>
 
 </Window>
